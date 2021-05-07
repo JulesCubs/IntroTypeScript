@@ -26,8 +26,24 @@ showPicture({
     //extra: 'test'  //<--- Error no se encuentra en la interface
 });
 function generatePicture(config) {
-    const pic = {};
+    const pic = { title: 'Default', date: '2020-03' };
     if (config.title) {
         pic.title = config.title;
     }
+    if (config.date) {
+        pic.date = config.date;
+    }
+    return pic;
 }
+let picture = generatePicture({});
+console.log('picture', picture);
+picture = generatePicture({ title: 'Travel Pic' });
+console.log('picture', picture);
+picture = generatePicture({ title: 'Travel Pic', date: '2021-05' });
+console.log('picture', picture);
+let user;
+user = { id: 10, username: 'JulianCubs', isPro: true };
+console.log('user', user);
+user.username = 'MarcosVargas';
+// user.id = 20; <-- Error porque el valor asignado es readonly
+console.log('user', user);
