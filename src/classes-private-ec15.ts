@@ -1,4 +1,7 @@
+// Typescript define una manera propia de declarar o marcar un miembro como privado
 export{}
+
+//Typescript 3.8
 
 enum PhotoOrientation {
     Landscape,
@@ -11,39 +14,39 @@ class Picture {
     // Propiedades
     // Typescript genera por defecto sus atributos como Public
     // Igualmente se puede configurar explicitamente cada uno de sus atributos de manera independiente
-    public id: number;
-    public title: string; 
-    public orientation: PhotoOrientation;
+    #id: number;
+    #title: string; 
+    #orientation: PhotoOrientation;
 
     public constructor(id: number, 
                 title: string, 
                 orientation: PhotoOrientation) {
-        this.id = id;
-        this.title = title;
-        this.orientation = orientation;
+        this.#id = id;
+        this.#title = title;
+        this.#orientation = orientation;
     }
 
     // Comportamiento
     toString() {
-        return `[id: ${this.id}, 
-                title: ${this.title},
-                orientation: ${this.orientation}]`;
+        return `[id: ${this.#id}, 
+                title: ${this.#title},
+                orientation: ${this.#orientation}]`;
     }
 }
 
 class Album {
-    id: number;
-    title: string;
-    pictures: Picture[];
+    #id: number;
+    #title: string;
+    #pictures: Picture[];
 
     constructor(id: number, title: string) {
-        this.id = id;
-        this.title = title;
-        this.pictures = [];
+        this.#id = id;
+        this.#title = title;
+        this.#pictures = [];
     }
 
     addPicture(picture: Picture) {
-        this.pictures.push(picture);
+        this.#pictures.push(picture);
     }
 }
 
@@ -54,8 +57,8 @@ album.addPicture(picture);
 console.log('album', album);
 
 //Accediendo a los miembros publicos
-picture.id = 100; //public
-picture.title = 'Another title'; // public
-album.title = 'Personal Activities';
+// picture.id = 100; //error porque es privado
+// picture.title = 'Another title'; // error porque es privado
+// album.title = 'Personal Activities'; //error porque es privado
 
 console.log('Album', album)

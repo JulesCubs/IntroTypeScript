@@ -35,7 +35,7 @@ const picture = new Picture(1, 'Platzi session', PhotoOrientation.Square);
 album.addPicture(picture);
 console.log('album', album);
 //Accediendo a los miembros publicos
-picture.id = 100; //public
-picture.title = 'Another title'; // public
-album.title = 'Personal Activities';
+// picture.id = 100; //error porque es privado
+// picture.title = 'Another title'; // error porque es privado
+// album.title = 'Personal Activities'; //error porque es privado
 console.log('Album', album);
